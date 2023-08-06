@@ -38,18 +38,31 @@ function resetSelected() {
   })
 }
 
+// Reset Score & playerChoice/computerChoice
+function resetAll() {
+  playerScoreNumber = 0
+  computerScoreNumber = 0
+  playerScoreEl.textContent = playerScoreNumber
+  computerScoreEl.textContent = computerScoreNumber
+  playerChoiceEl.textContent = ''
+  computerChoiceEl.textContent = ''
+  resultText.textContent = ''
+  resetSelected()
+}
+
+
 // Rnadom computer choice
 function computerRandomChoice() {
   const computerChoiceNumber = Math.random()
     if (computerChoiceNumber < 0.2) {
       computerChoice = 'rock'
-    } else if (computerChoice <= 0.4) {
+    } else if (computerChoiceNumber <= 0.4) {
       computerChoice = 'paper'
 
-    } else if (computerChoice <= 0.6) {
+    } else if (computerChoiceNumber <= 0.6) {
       computerChoice = 'scissors'
 
-    } else if (computerChoice <= 0.8) {
+    } else if (computerChoiceNumber <= 0.8) {
       computerChoice = 'lizard'
     } else {
       computerChoice = 'spock'
@@ -87,12 +100,10 @@ function displayComputerChoice () {
 
 // Check result, incerase scores, update resultText
 function updateScore(playerChoice) {
-  console.log(playerChoice, computerChoice)
   if(playerChoice === computerChoice) {
     resultText.textContent = `It's a tie`
   } else {
     const choice = choices[playerChoice]
-    console.log(choice.defeats.indexOf(computerChoice))
     if (choice.defeats.indexOf(computerChoice) > -1) {
       resultText.textContent = 'You Won!'
       playerScoreNumber++
@@ -143,3 +154,5 @@ function select(playerChoice) {
   } 
 }
 
+// On startup, set initial values
+resetAll()
