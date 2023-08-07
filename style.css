@@ -90,6 +90,14 @@ h2 {
   margin-top: 20px;
 }
 
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999; /* Make sure the confetti is on top of other elements */
+  pointer-events: none; /* Make sure the confetti canvas doesn't interfere with mouse events */
+}
+
 /* Media Query: Large Smartphone (Vertical) */
 @media screen and (max-width: 600px) {
   .game-container {
